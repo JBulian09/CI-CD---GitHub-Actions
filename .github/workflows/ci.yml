@@ -1,1 +1,24 @@
+name: CI Pipeline
 
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar repositorio
+      uses: actions/checkout@v4
+
+    - name: Verificar archivos
+      run: |
+        echo "Verificando archivos..."
+        test -f index.html
+        test -f style.css
+        test -f script.js
+
+    - name: Mensaje final
+      run: echo "Aplicación web verificada correctamente"
